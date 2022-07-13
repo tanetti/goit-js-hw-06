@@ -1,6 +1,6 @@
-const categories = document.querySelector('#categories');
+const categoriesRef = document.querySelector('#categories');
 
-console.log(`Number of categories: ${categories.children.length}`);
+console.log(`Number of categories: ${categoriesRef.children.length}`);
 console.log('\n');
 
 const findInnerCategories = parrentElement => {
@@ -42,4 +42,4 @@ const findInnerCategories = parrentElement => {
   });
 };
 
-findInnerCategories(categories);
+findInnerCategories(categoriesRef);
