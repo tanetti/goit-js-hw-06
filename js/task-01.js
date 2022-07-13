@@ -1,44 +1,25 @@
-const categoriesRef = document.querySelector('#categories');
+const categoriesListRef = document.querySelector('ul#categories');
+const categoriesRef = categoriesListRef.querySelectorAll('li.item');
+const fallbackMessage = 'Not Found!!!';
 
-console.log(`Number of categories: ${categoriesRef.children.length}`);
+console.log(`Number of categories: ${categoriesRef.length}`);
 console.log('\n');
 
-const findInnerCategories = parrentElement => {
+const findInnerCategories = categories => {
   let countOfElements = 0;
 
-  // -------------------- V 1.0 --------------------
+  categories.forEach(category => {
+    countOfElements += 1;
+    console.group(`Element ${countOfElements}`);
 
-  // for (const childrenElement of parrentElement.children) {
-  //   countOfElements += 1;
-  //   console.group(`Element ${countOfElements}`);
+    const categoryTitleRef = category.querySelector('h2');
+    const categoryListRef = category.querySelector('ul');
 
-  //   for (const innerChildrenElement of childrenElement.children) {
-  //     if (innerChildrenElement.localName === 'h2') {
-  //       console.log(`Category: ${innerChildrenElement.innerHTML}`);
-  //     } else if (innerChildrenElement.localName === 'ul') {
-  //       console.log(`Elements: ${innerChildrenElement.children.length}`);
-  //     }
-  //   }
+    console.log(`Category: ${categoryTitleRef ? categoryTitleRef.textContent : fallbackMessage}`);
+    console.log(`Elements: ${categoryListRef ? categoryListRef.children.length : fallbackMessage}`);
 
-  //   console.groupEnd();
-  //   console.log('\n');
-  // }
-
-  // -------------------- V 2.0 --------------------
-
-  parrentElement.childNodes.forEach(childrenElement => {
-    if (childrenElement.localName === 'li' && childrenElement.classList.value.includes('item')) {
-      countOfElements += 1;
-      console.group(`Element ${countOfElements}`);
-
-      childrenElement.childNodes.forEach(innerChildrenElement => {
-        innerChildrenElement.localName === 'h2' && console.log(`Category: ${innerChildrenElement.innerHTML}`);
-        innerChildrenElement.localName === 'ul' && console.log(`Elements: ${innerChildrenElement.children.length}`);
-      });
-
-      console.groupEnd();
-      console.log('\n');
-    }
+    console.groupEnd();
+    console.log('\n');
   });
 };
 
