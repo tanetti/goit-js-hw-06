@@ -1,12 +1,12 @@
 const refs = {
   counterButtons: document.querySelectorAll('[data-action]'),
-  valueHandler: document.querySelector('span#value'),
+  valueField: document.querySelector('span#value'),
 };
 
 let counterValue = 0;
 
-const onIncrementCouterButtonClick = () => (refs.valueHandler.textContent = counterValue += 1);
-const onDecrementCouterButtonClick = () => (refs.valueHandler.textContent = counterValue -= 1);
+const onIncrementCouterButtonClick = () => (refs.valueField.textContent = counterValue += 1);
+const onDecrementCouterButtonClick = () => (refs.valueField.textContent = counterValue -= 1);
 
 refs.counterButtons.forEach(
   button =>
