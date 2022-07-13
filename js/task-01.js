@@ -27,7 +27,7 @@ const findInnerCategories = parrentElement => {
   // -------------------- V 2.0 --------------------
 
   parrentElement.childNodes.forEach(childrenElement => {
-    if (childrenElement.localName === 'li') {
+    if (childrenElement.localName === 'li' && childrenElement.classList.value.includes('item')) {
       countOfElements += 1;
       console.group(`Element ${countOfElements}`);
 
