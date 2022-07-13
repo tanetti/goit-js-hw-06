@@ -4,10 +4,11 @@ const refs = {
   body: document.body,
 };
 
-const getRandomHexColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+const getRandomHexColor = () =>
+  `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padEnd(6, '0')}`;
 
-const onChangeColorButtonClick = () => {
-  refs.colorText.textContent = refs.body.style.backgroundColor = getRandomHexColor();
-};
+const onChangeColorButtonClick = () => (refs.colorText.textContent = refs.body.style.backgroundColor = getRandomHexColor());
 
 refs.changeColorButton.addEventListener('click', onChangeColorButtonClick);
