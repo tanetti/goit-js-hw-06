@@ -17,7 +17,7 @@ const onCreateButtonClick = () => {
   const els = refs.elementsToCreate;
 
   if (!els.value) {
-    alert('Please enter a Numer of elements to create!');
+    alert('Please enter a Number of elements to create!');
     return;
   } else if (Number(els.value) < Number(els.min) || Number(els.value) > Number(els.max)) {
     alert(`Number of elements to create, must be set between ${els.min} and ${els.max}!`);
