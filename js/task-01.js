@@ -15,8 +15,8 @@ const findInnerCategories = categories => {
     const categoryTitleRef = category.querySelector('h2');
     const categoryListRef = category.querySelector('ul');
 
-    console.log(`Category: ${categoryTitleRef ? categoryTitleRef.textContent : fallbackMessage}`);
-    console.log(`Elements: ${categoryListRef ? categoryListRef.children.length : fallbackMessage}`);
+    console.log(`Category: ${categoryTitleRef?.textContent ?? fallbackMessage}`);
+    console.log(`Elements: ${categoryListRef?.children.length ?? fallbackMessage}`);
 
     console.groupEnd();
     console.log('\n');

@@ -8,7 +8,9 @@ const onLoginFormSubmit = event => {
   if (!email.value) {
     alert('Please enter your Email address!');
     return;
-  } else if (!password.value) {
+  }
+  
+  if (!password.value) {
     alert('Please enter your Password!');
     return;
   }
