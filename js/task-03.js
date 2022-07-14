@@ -25,14 +25,14 @@ const createGalleryMarkup = images =>
     .map(
       ({ url, alt }) =>
         `<li class="${GALLERY_ITEM_CLASS}">
-      <img
-        class="${GALLERY_IMAGE_CLASS}"
-        src="${url}"
-        width="${GALLERY_IMAGE_WIDTH}"
-        height="${GALLERY_IMAGE_HEIGHT}"
-        alt="${alt}"
-      />
-    </li>`
+          <img
+            class="${GALLERY_IMAGE_CLASS}"
+            src="${url}"
+            width="${GALLERY_IMAGE_WIDTH}"
+            height="${GALLERY_IMAGE_HEIGHT}"
+            alt="${alt}"
+          />
+        </li>`
     )
     .join('');
 
