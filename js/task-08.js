@@ -2,6 +2,7 @@ const loginFormRef = document.querySelector('form.login-form');
 
 const onLoginFormSubmit = event => {
   event.preventDefault();
+
   const { email, password } = event.currentTarget.elements;
 
   if (!email.value) {

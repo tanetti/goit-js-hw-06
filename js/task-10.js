@@ -24,11 +24,11 @@ const getRandomHexColor = () =>
 
 const createBoxes = amount => {
   let boxesMarkup = '';
-  let boxesDimension = BOX_START_DIMENSION;
 
-  for (let i = 1; i <= amount; i += 1) {
-    boxesMarkup += `<div style="width: ${boxesDimension}px; height: ${boxesDimension}px; background-color: ${getRandomHexColor()}"></div>`;
-    boxesDimension += BOX_ENLARGE_STEP;
+  for (let i = 0; i < amount; i += 1) {
+    const boxDimension = BOX_START_DIMENSION + i * BOX_ENLARGE_STEP;
+
+    boxesMarkup += `<div style="width: ${boxDimension}px; height: ${boxDimension}px; background-color: ${getRandomHexColor()}"></div>`;
   }
 
   refs.boxesArea.insertAdjacentHTML('afterbegin', boxesMarkup);
@@ -46,18 +46,18 @@ const onWindowKeyDown = ({ code }) => {
 };
 
 const onCreateButtonClick = () => {
-  const els = refs.elementsToCreate;
+  const { value, min, max } = refs.elementsToCreate;
 
-  if (!els.value) {
+  if (!value) {
     alert('Please enter a Number of elements to create!');
     return;
-  } else if (Number(els.value) < Number(els.min) || Number(els.value) > Number(els.max)) {
-    alert(`Number of elements to create, must be set between ${els.min} and ${els.max}!`);
+  } else if (Number(value) < Number(min) || Number(value) > Number(max)) {
+    alert(`Number of elements to create, must be set between ${min} and ${max}!`);
     refs.elementsToCreate.value = '';
     return;
   }
 
-  createBoxes(Number(els.value));
+  createBoxes(Number(value));
   refs.elementsToCreate.value = '';
   refs.elementsToCreate.disabled = true;
   refs.createButton.disabled = true;
