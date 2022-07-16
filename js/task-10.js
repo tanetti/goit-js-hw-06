@@ -33,7 +33,7 @@ const createBoxes = amount => {
     boxesMarkup += `<div style="width: ${boxDimension}px; height: ${boxDimension}px; background-color: ${getRandomHexColor()}"></div>`;
   }
 
-  refs.boxesArea.insertAdjacentHTML('afterbegin', boxesMarkup);
+  refs.boxesArea.innerHTML = boxesMarkup;
 };
 
 
