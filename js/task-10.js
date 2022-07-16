@@ -17,10 +17,12 @@ refs.elementsToCreate.focus();
 refs.createButton.textContent += ' (Enter)';
 refs.destroyButton.textContent += ' (Enter/Esc)';
 
+
 const getRandomHexColor = () =>
   `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padEnd(6, '0')}`;
+
 
 const createBoxes = amount => {
   let boxesMarkup = '';
@@ -34,7 +36,17 @@ const createBoxes = amount => {
   refs.boxesArea.insertAdjacentHTML('afterbegin', boxesMarkup);
 };
 
+
 const destroyBoxes = () => (refs.boxesArea.innerHTML = '');
+
+
+const toggleControlsState = () => {
+  refs.elementsToCreate.value = '';
+  refs.elementsToCreate.disabled = !refs.elementsToCreate.disabled;
+  refs.createButton.disabled = !refs.createButton.disabled;
+  refs.destroyButton.disabled = !refs.destroyButton.disabled;
+};
+
 
 const onWindowKeyDown = ({ code }) => {
   if (!refs.createButton.disabled) {
@@ -45,31 +57,30 @@ const onWindowKeyDown = ({ code }) => {
   }
 };
 
+
 const onCreateButtonClick = () => {
   const { value, min, max } = refs.elementsToCreate;
+  const valueNumber = Number(value);
 
   if (!value) {
     alert('Please enter a Number of elements to create!');
     return;
-  } else if (Number(value) < Number(min) || Number(value) > Number(max)) {
+  } else if (valueNumber < min || valueNumber > max) {
     alert(`Number of elements to create, must be set between ${min} and ${max}!`);
     refs.elementsToCreate.value = '';
     return;
   }
 
-  createBoxes(Number(value));
-  refs.elementsToCreate.value = '';
-  refs.elementsToCreate.disabled = true;
-  refs.createButton.disabled = true;
-  refs.destroyButton.disabled = false;
+  createBoxes(valueNumber);
+  toggleControlsState();
 };
+
 
 const onDestroyButtonClick = () => {
   destroyBoxes();
-  refs.elementsToCreate.disabled = false;
-  refs.createButton.disabled = false;
-  refs.destroyButton.disabled = true;
+  toggleControlsState();
 };
+
 
 window.addEventListener('keydown', onWindowKeyDown);
 refs.createButton.addEventListener('click', onCreateButtonClick);
