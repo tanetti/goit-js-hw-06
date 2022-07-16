@@ -8,11 +8,11 @@ const getRandomHexColor = () =>
     .toString(16)
     .padEnd(6, '0')}`;
 
-const onChangeColorButtonClick = () => {
-  const currentColor = getRandomHexColor();
-
-  refs.colorText.textContent = currentColor;
-  document.body.style.backgroundColor = currentColor;
+const applyGeneratedColor = generatedColor => {
+  refs.colorText.textContent = generatedColor;
+  document.body.style.backgroundColor = generatedColor;
 };
+    
+const onChangeColorButtonClick = () => applyGeneratedColor(getRandomHexColor());
 
 refs.changeColorButton.addEventListener('click', onChangeColorButtonClick);
