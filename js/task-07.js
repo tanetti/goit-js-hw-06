@@ -6,6 +6,6 @@ const refs = {
 // Set range-input to start position
 refs.rangeInput.value = refs.rangeInput.min;
 
-const onRangeInputChange = ({ currentTarget: range }) => (refs.textContent.style.fontSize = `${range.value}px`);
+const onRangeInputChange = ({ currentTarget }) => (refs.textContent.style.fontSize = `${currentTarget.value}px`);
 
 refs.rangeInput.addEventListener('input', onRangeInputChange);

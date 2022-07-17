@@ -3,6 +3,6 @@ const refs = {
   nameOutput: document.querySelector('span#name-output'),
 };
 
-const onNameInputValueChange = ({ currentTarget: input }) => (refs.nameOutput.textContent = input.value || 'Anonymous');
+const onNameInputValueChange = ({ currentTarget }) => (refs.nameOutput.textContent = currentTarget.value || 'Anonymous');
 
 refs.nameInprut.addEventListener('input', onNameInputValueChange);
