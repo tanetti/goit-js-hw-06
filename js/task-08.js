@@ -14,18 +14,13 @@ const onLoginFormSubmit = event => {
   }
 
   const userCredentialsObject = createUserCredentialsObject(email, password);
-  logUserCredentialsObject(userCredentialsObject);
-  resetFormFields(event.currentTarget);
+  console.log(userCredentialsObject);
+  event.currentTarget.reset();
 };
 
-const createUserCredentialsObject = (email, password) => 
-({
+const createUserCredentialsObject = (email, password) => ({
   [email.name]: email.value,
   [password.name]: password.value,
 });
-
-const logUserCredentialsObject = userCredentialsObject => console.log(userCredentialsObject);
-
-const resetFormFields = form => form.reset();
 
 loginFormRef.addEventListener('submit', onLoginFormSubmit);

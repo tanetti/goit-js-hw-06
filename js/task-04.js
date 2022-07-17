@@ -5,11 +5,22 @@ const refs = {
 
 let counterValue = 0;
 
-const onIncrementCouterButtonClick = () => (refs.valueField.textContent = counterValue += 1);
-const onDecrementCouterButtonClick = () => (refs.valueField.textContent = counterValue -= 1);
+const onIncrementCouterButtonClick = () => {
+  counterValue += 1;
+  updateCounerValue();
+};
 
-refs.counterButtons.forEach(
-  button =>
-    (button.dataset.action === 'increment' && button.addEventListener('click', onIncrementCouterButtonClick)) ||
-    (button.dataset.action === 'decrement' && button.addEventListener('click', onDecrementCouterButtonClick))
-);
+const onDecrementCouterButtonClick = () => {
+  counterValue -= 1;
+  updateCounerValue();
+};
+
+const updateCounerValue = () => (refs.valueField.textContent = counterValue);
+
+refs.counterButtons.forEach(button => {
+  if (button.dataset.action === 'increment') {
+    button.addEventListener('click', onIncrementCouterButtonClick);
+  } else if (button.dataset.action === 'decrement') {
+    button.addEventListener('click', onDecrementCouterButtonClick);
+  }
+});
